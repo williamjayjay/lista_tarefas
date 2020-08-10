@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -38,14 +37,16 @@ class _HomeState extends State<Home > {
   }
 
   void _addTodo() {
-    setState(() {
-      Map<String, dynamic> newTodo = Map();
-      newTodo["title"] = _todoController.text;
-      _todoController.text = "";
-      newTodo["ok"] = false;
-      _toDoList.add(newTodo);
-      _saveData();
-    });
+    if(_todoController.text != ""){
+      setState(() {
+        Map<String, dynamic> newTodo = Map();
+        newTodo["title"] = _todoController.text;
+        _todoController.text = "";
+        newTodo["ok"] = false;
+        _toDoList.add(newTodo);
+        _saveData();
+      });
+    }
   }
 
   Future<Null> _refreshNow() async{
@@ -67,7 +68,7 @@ class _HomeState extends State<Home > {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lista de Tarefas"),
+        title: Text("Lista de Tarefas do WILLIAMJJ"),
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
       ),
